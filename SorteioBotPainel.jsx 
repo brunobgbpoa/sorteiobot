@@ -1,0 +1,61 @@
+
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
+export default function SorteioBotPainel() {
+  const [centenas, setCentenas] = useState([""]);
+  const [telefone, setTelefone] = useState("");
+
+  const adicionarCentena = () => {
+    if (centenas.length < 1 || centenas[centenas.length - 1] !== "") {
+      setCentenas([...centenas, ""]);
+    }
+  };
+
+  const atualizarCentena = (valor, index) => {
+    const novas = [...centenas];
+    novas[index] = valor;
+    setCentenas(novas);
+  };
+
+  return (
+    <div className="min-h-screen bg-white flex items-center justify-center p-4">
+      <div className="w-full max-w-md p-8 rounded-2xl shadow-lg border border-zinc-200 bg-zinc-50">
+        <div className="text-center mb-6">
+          <img src="/logo.svg" alt="Logo" className="mx-auto w-16 mb-2" />
+          <h1 className="text-2xl font-bold text-zinc-800">SorteioBot</h1>
+          <p className="text-sm text-zinc-500">Cadastre sua centena da sorte</p>
+        </div>
+
+        <div className="space-y-3">
+          <Input
+            placeholder="Seu número de WhatsApp"
+            value={telefone}
+            onChange={(e) => setTelefone(e.target.value)}
+          />
+          {centenas.map((valor, i) => (
+            <Input
+              key={i}
+              placeholder={`Centena ${i + 1}`}
+              value={valor}
+              onChange={(e) => atualizarCentena(e.target.value, i)}
+            />
+          ))}
+
+          {centenas.length < 2 ? (
+            <Button onClick={adicionarCentena} variant="outline">
+              + Adicionar nova centena
+            </Button>
+          ) : (
+            <div className="text-xs text-zinc-500 text-center">
+              Para cadastrar mais de 1 centena, assine o plano premium.
+            </div>
+          )}
+        </div>
+
+        <Button className="mt-6 w-full">Cadastrar</Button>
+      </div>
+    </div>
+  );
+}
