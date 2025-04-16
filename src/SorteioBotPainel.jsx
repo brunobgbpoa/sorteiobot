@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { Plus, Trash2 } from 'lucide-react';
+import { useState } from "react";
+import { Plus, Trash2 } from "lucide-react";
 
 export default function SorteioBotPainel() {
   const [centenas, setCentenas] = useState([]);
-  const [novaCentena, setNovaCentena] = useState('');
-  const [whatsapp, setWhatsapp] = useState('');
+  const [novaCentena, setNovaCentena] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
   const [showUpgrade, setShowUpgrade] = useState(false);
 
   function adicionarCentena() {
     if (!whatsapp.match(/^\d{10,13}$/)) {
-      alert('Informe um número de WhatsApp válido.');
+      alert("Informe um número de WhatsApp válido.");
       return;
     }
     if (novaCentena.match(/^\d{3}$/)) {
@@ -19,7 +19,7 @@ export default function SorteioBotPainel() {
       }
       if (!centenas.includes(novaCentena)) {
         setCentenas([...centenas, novaCentena]);
-        setNovaCentena('');
+        setNovaCentena("");
       }
     }
   }
@@ -34,7 +34,7 @@ export default function SorteioBotPainel() {
     <div className="min-h-screen bg-white px-4 py-8 md:px-12 lg:px-32 font-sans">
       <header className="flex items-center justify-between mb-10">
         <div className="flex items-center gap-2 text-3xl font-bold tracking-tight text-gray-900">
-          <img src="/logo.png" alt="SorteioBot Logo" className="w-8 h-8" />
+          <img src="/logo.png" alt="Logo" className="w-8 h-8" />
           Sorteio<span className="text-blue-600">Bot</span>
         </div>
       </header>
