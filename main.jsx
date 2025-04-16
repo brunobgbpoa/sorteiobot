@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import SorteioBotPainel from "./SorteioBotPainel";
+import SorteioBotPainel from "./src/SorteioBotPainel";
 import "./style.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
